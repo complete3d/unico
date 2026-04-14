@@ -63,7 +63,7 @@ This repository is tested with Ubuntu 22.04, Python 3.9, and PyTorch 1.12.1.
 
   ```bash
   # Replace device IDs with your own
-  ./scripts/infer.sh experiment=abcmulti evaluate.mode=easy evaluate.ckpt_path=ckpt/ckpt-best.pth
+  CUDA_VISIBLE_DEVICES=0 ./scripts/infer.sh experiment=abcmulti evaluate.mode=easy evaluate.ckpt_path=ckpt/ckpt-best.pth
   ```
 
 * Primitive assembly uses [PrimFit](https://github.com/xiaowuga/PrimFit) for ABC-multi, and [PolyFit](https://github.com/LiangliangNan/PolyFit), [KSR](https://www.cgal.org/2024/05/29/Kinetic_surface_reconstruction/), and [COMPOD](https://github.com/raphaelsulzer/compod) for plane-only assembly. Sample outputs are provided under `evaluation/`:

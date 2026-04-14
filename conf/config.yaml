@@ -1,0 +1,78 @@
+defaults:
+  - hydra: default
+  - experiment: abcmulti
+  - _self_
+
+exp_name: ${hydra:runtime.choices.experiment}
+
+paths:
+  project_root: ${hydra:runtime.cwd}
+  output_root: ${paths.project_root}/output
+  run_dir: ${paths.output_root}/${exp_name}
+  tensorboard_dir: ${paths.run_dir}/tensorboard
+
+runtime:
+  launcher: auto
+  num_workers: 24
+  seed: 0
+  deterministic: false
+  sync_bn: true
+  local_rank: ${oc.env:LOCAL_RANK,0}
+  use_gpu: true
+  resume: false
+  start_ckpt: null
+  distributed: false
+  world_size: 1
+
+training:
+  total_bs: 2
+  step_per_update: 1
+  max_epoch: 600
+  val_freq: 1
+
+optimizer:
+  type: AdamW
+  kwargs:
+    lr: 0.0001
+    weight_decay: 0.0005
+
+scheduler:
+  type: LambdaLR
+  kwargs:
+    decay_step: 21
+    lr_decay: 0.9
+    lowest_decay: 0.02
+
+bnmscheduler:
+  type: Lambda
+  kwargs:
+    decay_step: 21
+    bn_decay: 0.5
+    bn_momentum: 0.9
+    lowest_decay: 0.01
+
+loss:
+  obj_class_loss_weight: 1.0
+  mask_loss_weight: 2.5
+  non_obj_class_loss_weight: 0.2
+  primitive_chamfer_loss_weight: 20.0
+  chamfer_norm1_loss_weight: 20.0
+  primitive_normal_loss_weight: 1.0
+  first_stage: 0
+  second_stage: 0
+  third_stage: 600
+  consider_metric: ['chamfer_norm1_loss', 'total_loss_stage2', 'total_loss_stage3']
+
+evaluate:
+  input_source: abcmulti_eval
+  data_root: ${paths.project_root}/data/abcmulti
+  test_list_file: ${evaluate.data_root}/test.txt
+  output_dir: ${paths.project_root}/evaluation
+  mode: easy
+  device: cuda:0
+  data_mode: ply
+  output_format: seg
+  param_mode: points
+  threshold: 0.5
+  noise_std: 0.0
+  ckpt_path: ${paths.run_dir}/ckpt-best.pth

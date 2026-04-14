@@ -1,0 +1,38 @@
+train:
+  NAME: ABCPlane
+  subset: train
+  N_POINTS: 8192
+  num_renderings: 24
+  NUM_PLANES: 40
+  category_file_path: ${paths.project_root}/data/ABC_plane/ABC_plane.json
+  large_file_path: ${paths.project_root}/data/ABC_plane/file_large.json
+  input_points_path: ${paths.project_root}/data/ABC_plane/pc_all.h5
+  complete_points_path: ${paths.project_root}/data/ABC_plane/gt_all.h5
+  complete_planes_path: ${paths.project_root}/data/ABC_plane/gt_plane_all.h5
+  bs: null
+
+val:
+  NAME: ABCPlane
+  subset: test
+  N_POINTS: 8192
+  num_renderings: 24
+  NUM_PLANES: 40
+  category_file_path: ${paths.project_root}/data/ABC_plane/ABC_plane.json
+  large_file_path: ${paths.project_root}/data/ABC_plane/file_large.json
+  input_points_path: ${paths.project_root}/data/ABC_plane/pc_all.h5
+  complete_points_path: ${paths.project_root}/data/ABC_plane/gt_all.h5
+  complete_planes_path: ${paths.project_root}/data/ABC_plane/gt_plane_all.h5
+  bs: null
+
+test:
+  NAME: ABCPlane
+  subset: test
+  N_POINTS: 8192
+  num_renderings: 24
+  NUM_PLANES: 40
+  category_file_path: ${paths.project_root}/data/ABC_plane/ABC_plane.json
+  large_file_path: ${paths.project_root}/data/ABC_plane/file_large.json
+  input_points_path: ${paths.project_root}/data/ABC_plane/pc_all.h5
+  complete_points_path: ${paths.project_root}/data/ABC_plane/gt_all.h5
+  complete_planes_path: ${paths.project_root}/data/ABC_plane/gt_plane_all.h5
+  bs: 1

@@ -1,0 +1,16 @@
+# @package _global_
+
+defaults:
+  - /dataset: buildingnl
+  - /model: unico_plane
+  - _self_
+
+training:
+  total_bs: 32
+  step_per_update: 1
+  max_epoch: 600
+  val_freq: 1
+
+evaluate:
+  input_source: dataset
+  output_dir: ${paths.project_root}/evaluation/buildingnl

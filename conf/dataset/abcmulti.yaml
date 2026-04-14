@@ -1,0 +1,32 @@
+train:
+  NAME: ABCMulti
+  subset: train
+  N_POINTS: 8192
+  num_renderings: 24
+  NUM_PLANES: 40
+  data_path: ${paths.project_root}/data/abcmulti
+  h5_dir: h5
+  augment: false
+  bs: null
+
+val:
+  NAME: ABCMulti
+  subset: test
+  N_POINTS: 8192
+  num_renderings: 24
+  NUM_PLANES: 40
+  data_path: ${paths.project_root}/data/abcmulti
+  h5_dir: h5
+  augment: false
+  bs: null
+
+test:
+  NAME: ABCMulti
+  subset: test
+  N_POINTS: 8192
+  num_renderings: 24
+  NUM_PLANES: 40
+  data_path: ${paths.project_root}/data/abcmulti
+  h5_dir: h5
+  augment: false
+  bs: 1

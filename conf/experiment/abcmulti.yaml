@@ -1,0 +1,17 @@
+# @package _global_
+
+defaults:
+  - /dataset: abcmulti
+  - /model: unico_multi
+  - _self_
+
+training:
+  total_bs: 32
+  step_per_update: 1
+  max_epoch: 600
+  val_freq: 1
+
+evaluate:
+  input_source: abcmulti_eval
+  data_root: ${paths.project_root}/data/abcmulti
+  test_list_file: ${evaluate.data_root}/test.txt

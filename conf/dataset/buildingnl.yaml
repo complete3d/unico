@@ -1,0 +1,38 @@
+train:
+  NAME: BuildingNL
+  subset: train
+  N_POINTS: 16384
+  num_renderings: 2
+  NUM_PLANES: 40
+  category_file_path: ${paths.project_root}/data/BuildingNL/BuildingNL.json
+  large_file_path: ${paths.project_root}/data/BuildingNL/file_large.json
+  input_points_path: ${paths.project_root}/data/BuildingNL/pc_all.h5
+  complete_points_path: ${paths.project_root}/data/BuildingNL/gt_all.h5
+  complete_planes_path: ${paths.project_root}/data/BuildingNL/gt_plane_all.h5
+  bs: null
+
+val:
+  NAME: BuildingNL
+  subset: test
+  N_POINTS: 16384
+  num_renderings: 2
+  NUM_PLANES: 40
+  category_file_path: ${paths.project_root}/data/BuildingNL/BuildingNL.json
+  large_file_path: ${paths.project_root}/data/BuildingNL/file_large.json
+  input_points_path: ${paths.project_root}/data/BuildingNL/pc_all.h5
+  complete_points_path: ${paths.project_root}/data/BuildingNL/gt_all.h5
+  complete_planes_path: ${paths.project_root}/data/BuildingNL/gt_plane_all.h5
+  bs: null
+
+test:
+  NAME: BuildingNL
+  subset: test
+  N_POINTS: 16384
+  num_renderings: 2
+  NUM_PLANES: 40
+  category_file_path: ${paths.project_root}/data/BuildingNL/BuildingNL.json
+  large_file_path: ${paths.project_root}/data/BuildingNL/file_large.json
+  input_points_path: ${paths.project_root}/data/BuildingNL/pc_all.h5
+  complete_points_path: ${paths.project_root}/data/BuildingNL/gt_all.h5
+  complete_planes_path: ${paths.project_root}/data/BuildingNL/gt_plane_all.h5
+  bs: 1

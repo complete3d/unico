@@ -1,0 +1,5 @@
+run:
+  dir: ${paths.run_dir}
+job:
+  chdir: false
+output_subdir: .hydra

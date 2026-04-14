@@ -1,0 +1,47 @@
+NAME: UNICO
+first_stage: 0
+num_query: 512
+primitive_query_num: 40
+num_points: 8192
+center_num: [512, 256]
+global_feature_dim: 1024
+encoder_type: graph
+decoder_type: fc
+use_multi_primitive: true
+encoder_config:
+  embed_dim: 384
+  depth: 6
+  num_heads: 6
+  k: 8
+  n_group: 2
+  mlp_ratio: 2.0
+  block_style_list: ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn']
+  combine_style: concat
+decoder_config:
+  embed_dim: 384
+  depth: 8
+  num_heads: 6
+  k: 8
+  n_group: 2
+  mlp_ratio: 2.0
+  self_attn_block_style_list: ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn']
+  self_attn_combine_style: concat
+  cross_attn_block_style_list: ['attn-graph', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn', 'attn']
+  cross_attn_combine_style: concat
+primitive_segmentation_config:
+  second_stage: 0
+  primitive_query_type: static
+  primitive_query_num: 40
+  num_quadric_params: 10
+  num_primitive_classes: 5
+  primitive_decoder_cofig:
+    embed_dim: 128
+    depth: 4
+    num_heads: 8
+    k: 8
+    n_group: 2
+    mlp_ratio: 2.0
+    self_attn_block_style_list: ['attn', 'attn', 'attn', 'attn']
+    self_attn_combine_style: concat
+    cross_attn_block_style_list: ['attn', 'attn', 'attn', 'attn']
+    cross_attn_combine_style: concat
